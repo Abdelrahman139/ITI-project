@@ -1,0 +1,48 @@
+﻿@model List<User>
+
+<head>
+
+    <link rel="stylesheet" href="/css/allstyles.css">
+
+</head>
+
+    <div class="container">
+        <h1>Manage Users</h1>
+        <a asp-controller="User" asp-action="Add" class="button">Add New User</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td class="username">@user.Name</td>
+                        <td class="role">@user.Role</td>
+                        <td>
+                            <div class="action-buttons">
+                                <a asp-controller="User" asp-action="Details" asp-route-id="@user.Id" class="button">View</a>
+                            <a asp-action="ChangeRole" asp-route-id="@user.Id" class="button button-secondary">
+                                    @if (user.Role == "Admin")
+                                    {
+                                        <text>  Make User </text>
+                                    }
+                                    else
+                                    {
+                                        <text> Make Admin</text>
+                                    }
+
+                                </a>
+                            <a asp-controller="User" asp-action="Delete" asp-route-id="@user.Id" class="button button-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+

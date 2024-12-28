@@ -1,0 +1,53 @@
+﻿@using Train_Tickets.ViewModels
+@using Train_Tickets.Controllers
+@model TripVM
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Trip</title>
+<head>
+
+    <link rel="stylesheet" href="/css/allstyles2.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Trip</h1>
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="Price">Price</label>
+                <input asp-for="Price" type="number" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartTime">Start Time</label>
+                <input asp-for="StartTime" type="datetime-local" required>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndTime">End Time</label>
+                <input asp-for="EndTime" type="datetime-local" required>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartStationId" class="control-label">Start Station</label>
+                <select asp-for="StartStationId" asp-items="@(new SelectList(Model.Stations, "Id", "Name"))" class="form-control"></select>
+                <span asp-validation-for="StartStationId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EndStationId" class="control-label">End Station</label>
+                <select asp-for="EndStationId" asp-items="@(new SelectList(Model.Stations, "Id", "Name"))" class="form-control"></select>
+                <span asp-validation-for="EndStationId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TrainId" class="control-label">Train Type</label>
+                <select asp-for="TrainId" asp-items="@(new SelectList(Model.Trains, "Id", "Model"))" class="form-control"></select>
+                <span asp-validation-for="TrainId" class="text-danger"></span>
+            </div>
+
+
+            <button type="submit">Create Trip</button>
+        </form>
+    </div>
+</body>

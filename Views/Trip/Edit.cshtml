@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Train_Tickets.ViewModels
+@using Train_Tickets.Controllers
+@model TripVM
+
+<head>
+
+    <link rel="stylesheet" href="/css/allstyles2.css">
+
+</head>
+
+
+<body>
+    <div class="container">
+        <h1>Edit Trip</h1>
+        <form asp-action="Edit" method="post">
+
+            <div class="form-group">
+                <label asp-for="Price">Price</label>
+                <input asp-for="Price" type="number" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StartTime">Start Time</label>
+                <input asp-for="StartTime" type="datetime-local" required>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndTime">End Time</label>
+                <input asp-for="EndTime" type="datetime-local" required>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartStationId">Start Station</label>
+                <select asp-for="StartStationId" asp-items="@(new SelectList(Model.Stations, "Id", "Name"))"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndStationId">End Station</label>
+                <select asp-for="EndStationId" asp-items="@(new SelectList(Model.Stations, "Id", "Name"))"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrainId">Train Type</label>
+                <select asp-for="TrainId" asp-items="@(new SelectList(Model.Trains, "Id", "Model"))"></select>
+            </div>
+            <button type="submit">Update Trip</button>
+        </form>
+    </div>
+</body>

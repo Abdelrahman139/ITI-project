@@ -1,0 +1,35 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    int i = 1;
+}
+
+
+<head>
+
+    <link rel="stylesheet" href="/css/allstyles.css">
+
+</head>
+
+
+
+
+@model User
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>@Model.Name</h2>
+        </div>
+        <div class="card-body">
+            <p>Email: @Model.Email</p>
+            <p>Role: @Model.Role</p>
+        </div>
+       @if(@Model.Id==Context.Session.GetInt32("UserId")){
+        <div class="card-footer">
+            <a asp-action="Edit" asp-controller="User" asp-route-id="@Model.Id" class="button">Edit my info</a>
+        </div>
+       }
+    </div>
+</div>

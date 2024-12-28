@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Tickets - Modern Design</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .tickets-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .trip-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: 320px;
+            transition: transform 0.3s ease;
+        }
+
+            .trip-card:hover {
+                transform: translateY(-5px);
+            }
+
+        .trip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .station {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .arrow {
+            font-size: 1.5em;
+            color: #3498db;
+        }
+
+        .trip-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .detail {
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .detail-value {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+
+            .button:hover {
+                background-color: #c0392b;
+            }
+    </style>
+</head>
+<body>
+    <h2>Your Tickets</h2>
+    <div class="tickets-container">
+        @foreach (var ticket in Model)
+        {
+            <div class="trip-card">
+                <div class="trip-header">
+                    <div class="station">@ticket.Trip.StartStation.Name</div>
+                    <div class="arrow">→</div>
+                    <div class="station">@ticket.Trip.EndStation.Name</div>
+                </div>
+                <div class="trip-details">
+                    <div class="detail">
+                        <div class="detail-label">Price</div>
+                        <div class="detail-value">£@ticket.Trip.Price</div>
+                    </div>
+                    <div class="detail">
+                        <div class="detail-label">Departure</div>
+                        <div class="detail-value">@ticket.Trip.StartTime.ToString("dd MMM HH:mm")</div>
+                    </div>
+                </div>
+                <a asp-action="Delete" asp-controller="Ticket" asp-route-Id="@ticket.Id" class="button">
+                    Cancel Ticket
+                </a>
+            </div>
+        }
+    </div>
+</body>
+</html>

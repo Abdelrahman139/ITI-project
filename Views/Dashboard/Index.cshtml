@@ -1,0 +1,118 @@
+﻿
+
+
+
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+
+ 
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-weight: 300;
+            color: #333;
+        }
+
+        .dashboard-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .dashboard-card {
+            background-color: white;
+            width: 220px;
+            margin: 15px;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+            .dashboard-card:hover {
+                transform: translateY(-10px);
+            }
+
+        .dashboard-card .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .dashboard-card .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .dashboard-card .card-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background-color 0.3s;
+        }
+
+            .dashboard-card .card-link:hover {
+                background-color: #0056b3;
+            }
+
+        @@media (max-width: 768px) {
+            .dashboard-card {
+                width: 100%;
+            }
+        }
+    </style>
+
+
+    <div class="dashboard-container">
+        <h1>Admin Dashboard</h1>
+        <div class="dashboard-row">
+          
+            <div class="dashboard-card">
+                <div class="icon">&#128649;</div>
+                <h5 class="card-title">Manage Trips</h5>
+                <a asp-controller="Trip" asp-action="Dashboard" class="card-link">View Trips</a>
+            </div>
+
+         
+            <div class="dashboard-card">
+                <div class="icon">&#128642;</div>
+                <h5 class="card-title">Manage Trains</h5>
+                <a asp-controller="Train" asp-action="Index" class="card-link">View Trains</a>
+            </div>
+
+          
+            <div class="dashboard-card">
+                <div class="icon">&#128647;</div>
+                <h5 class="card-title">Manage Stations</h5>
+                <a asp-controller="Station" asp-action="Index" class="card-link">View Stations</a>
+            </div>
+
+         
+            <div class="dashboard-card">
+                <div class="icon">&#128100;</div>
+                <h5 class="card-title">Manage Users</h5>
+                <a asp-controller="User" asp-action="Index" class="card-link">View Users</a>
+            </div>
+        </div>
+    </div>
+
+ 
+

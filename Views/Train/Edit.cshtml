@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Train
+
+<head>
+    <link rel="stylesheet" href="/css/allstyles2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Train</h1>
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Model">Train Model</label>
+                <input asp-for="Model" name="Model" required />
+            </div>
+            <button type="submit">Update Train</button>
+        </form>
+        <a asp-action="Index" class="button">Back to Train List</a>
+    </div>
+</body>

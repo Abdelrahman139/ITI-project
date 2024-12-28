@@ -1,0 +1,22 @@
+﻿@model Train
+<head>
+    <link rel="stylesheet" href="/css/allstyles2.css">
+</head>
+
+
+<head>
+    <link rel="stylesheet" href="/css/allstyles2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Train</h1>
+        <form asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="Model">Train Model</label>
+                <input asp-for="Model" />
+            </div>
+            <button type="submit">Add Train</button>
+        </form>
+        <a asp-action="Index" class="button">Back to Train List</a>
+    </div>
+</body>

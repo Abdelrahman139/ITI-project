@@ -1,0 +1,29 @@
+﻿<head>
+    <link rel="stylesheet" href="/css/allstyles2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Trains</h1>
+        <a asp-controller="Train" asp-action="Create" class="button">Add New Train</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Train Model</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var train in Model)
+                {
+                    <tr>
+                        <td>@train.Model</td>
+                        <td>
+                            <a asp-controller="Train" asp-action="Edit" asp-route-id="@train.Id" class="button">Edit</a>
+                            <a asp-controller="Train" asp-action="Delete" asp-route-id="@train.Id" class="button">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

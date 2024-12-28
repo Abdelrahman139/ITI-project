@@ -1,0 +1,31 @@
+﻿@model List<Station>
+
+<head>
+    <link rel="stylesheet" href="/css/allstyles2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Stations</h1>
+        <a asp-controller="Station" asp-action="Create" class="button">Add New Station</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Station Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var station in Model)
+                {
+                    <tr>
+                        <td>@station.Name</td>
+                        <td>
+                            <a asp-controller="Station" asp-action="Edit" asp-route-id="@station.Id" class="button">Edit</a>
+                            <a asp-controller="Station" asp-action="Delete" asp-route-id="@station.Id" class="button">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

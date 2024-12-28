@@ -1,0 +1,19 @@
+﻿
+@model Station
+<head>
+    <link rel="stylesheet" href="/css/allstyles2.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Station</h1>
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name">Station Name</label>
+                <input asp-for="Name" name="Name" required />
+            </div>
+            <button type="submit">Update Station</button>
+        </form>
+        <a asp-action="Index" class="button">Back to Station List</a>
+    </div>
+</body>
